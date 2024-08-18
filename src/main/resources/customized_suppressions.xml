@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    # Copyright 2015 WSO2 Inc. (http://wso2.org)
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License at
+    #
+    # http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+-->
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<!--<!DOCTYPE module PUBLIC-->
+<!--        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"-->
+<!--        "https://checkstyle.org/dtds/configuration_1_3.dtd">-->
+
+<suppressions>
+
+<!--    <suppress checks="MissingJavadocMethod" files=".*" />-->
+<!--    <suppress checks="MissingJavadocType" files=".*" />-->
+    <suppress checks=".*" files="ESAPI.properties" />
+
+    <!-- Goes against intelliJ commenting style
+    Ref: https://stackoverflow.com/questions/56792141/checkstyle-comments -->
+    <suppress checks="CommentsIndentation" files=".*" />
+
+    <!-- Commented following because we are all using intelliJ auto import
+    and the following checks do not understand the separation between groups -->
+    <suppress checks="CustomImportOrder" files=".*" />
+
+    <!-- Commenting this because it expects operators like + to start in a new line which looks worse -->
+    <suppress checks="OperatorWrap" files=".*" />
+
+
+</suppressions>

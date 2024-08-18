@@ -1,0 +1,31 @@
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        enable_lazy_load_no_trans: true
+        show_sql: true
+        format_sql: true
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  server:
+    servlet:
+      context-path: /api
+      error:
+        include-message: always
+        include-binding-errors: always
+        include-stacktrace: on_trace_param
+        include-exception: true
