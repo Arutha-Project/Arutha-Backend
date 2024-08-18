@@ -12,7 +12,7 @@
 	<artifactId>arutha</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>arutha</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Arutha backend</description>
 	<url/>
 	<licenses>
 		<license/>
