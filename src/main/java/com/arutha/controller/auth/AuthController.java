@@ -2,6 +2,7 @@ package com.arutha.controller.auth;
 
 import com.arutha.api.request.jwt.JwtApi;
 import com.arutha.api.response.jwt.JwtResponse;
+import com.arutha.api.response.users.CurrentUserUsersResponse;
 import com.arutha.constants.AppErrorCodes;
 import com.arutha.exception.CustomException;
 import com.arutha.service.users.CustomUserDetailsService;
@@ -51,10 +52,11 @@ public class AuthController {
         // Fetch user details after authenticating
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(request.getEmail());
         String token = this.jwtHelper.generateToken(userDetails);
+        CurrentUserUsersResponse currentUser = customUserDetailsService.getCurrentUser(request.getEmail());
         // return response token
         JwtResponse response = JwtResponse.builder()
                 .jwtToken(token)
-                .username(userDetails.getUsername()).build();
+                .currentUser(currentUser).build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
