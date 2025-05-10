@@ -42,7 +42,7 @@ public class CustomUserDetailsService implements UserDetailsService {
      */
     public CurrentUserUsersResponse getCurrentUser(String userEmailAddress) {
         Users user = userRepository.findByEmail(userEmailAddress);
-       CurrentUserUsersResponse response = new CurrentUserUsersResponse();
+        CurrentUserUsersResponse response = new CurrentUserUsersResponse();
         response.setId(user.getId());
         response.setEmail(user.getEmail());
         response.setFirstName(user.getFirstName());
