@@ -1,5 +1,6 @@
 package com.arutha.api.response.jwt;
 
+import com.arutha.api.response.users.CurrentUserUsersResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +18,6 @@ import lombok.ToString;
 public class JwtResponse {
 
     private String jwtToken;
-    private String username;
+    private CurrentUserUsersResponse currentUser;
+
 }

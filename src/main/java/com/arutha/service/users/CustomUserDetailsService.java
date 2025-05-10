@@ -1,5 +1,6 @@
 package com.arutha.service.users;
 
+import com.arutha.api.response.users.CurrentUserUsersResponse;
 import com.arutha.model.users.Users;
 import com.arutha.repository.users.UserRepository;
 import lombok.AllArgsConstructor;
@@ -31,5 +32,23 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE" + user.getRole().getRoleName());
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 authorities);
+    }
+
+    /**
+     * Get Current User.
+     *
+     * @param userEmailAddress - user email
+     * @return CurrentUserUsersResponse
+     */
+    public CurrentUserUsersResponse getCurrentUser(String userEmailAddress) {
+        Users user = userRepository.findByEmail(userEmailAddress);
+       CurrentUserUsersResponse response = new CurrentUserUsersResponse();
+        response.setId(user.getId());
+        response.setEmail(user.getEmail());
+        response.setFirstName(user.getFirstName());
+        response.setLastName(user.getLastName());
+        response.setRoleName(user.getRole().getRoleName());
+        return response;
+
     }
 }
