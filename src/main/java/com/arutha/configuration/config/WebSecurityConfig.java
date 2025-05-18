@@ -45,6 +45,8 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                         .requestMatchers(EndpointConstant.USERS).hasAnyRole(SystemConstants.ADMIN)
+                        .requestMatchers(EndpointConstant.NUMBERS).hasAnyRole(SystemConstants.STUDENT,
+                                SystemConstants.ADMIN)
                         .requestMatchers(EndpointConstant.ROLES).hasAnyRole(SystemConstants.ADMIN)
                         .requestMatchers(HttpMethod.POST, EndpointConstant.AUTH).permitAll()
                         .anyRequest().authenticated());
