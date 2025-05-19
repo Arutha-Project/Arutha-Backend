@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Request class for Number score save
+ * Request class for Number score save.
  */
 
 @Getter

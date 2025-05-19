@@ -6,16 +6,25 @@ import com.arutha.repository.numbers.NumberScoreRepository;
 import com.arutha.repository.users.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Number score service.
+ */
 @Service
 @RequiredArgsConstructor
 public class NumberScoreService {
+
+    /**
+     * Number score service methods.
+     */
     private final NumberScoreRepository numberScoreRepository;
     private final UserRepository userRepository;
 
+    /**
+     * Save score method.
+     */
     public NumberScore saveScore(Integer userId, Integer score) {
         Users users = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));

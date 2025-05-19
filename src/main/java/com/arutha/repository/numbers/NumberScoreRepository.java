@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Number score repository.
+ */
 @Repository
 public interface NumberScoreRepository extends JpaRepository<NumberScore, Long> {
     List<NumberScore> findByUserId(Long userId);

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ScoreResponse {
     private Integer id;
-    private Integer user_id;
+    private Integer userId;
     private Integer score;
-    private LocalDateTime create_at;
+    private LocalDateTime createAt;
 }
