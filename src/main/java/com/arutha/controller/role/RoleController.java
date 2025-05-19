@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Controller class for Role.
+ * Controller class for Games.
  */
 @AllArgsConstructor
 @RestController
@@ -37,10 +37,10 @@ public class RoleController {
     private final RoleService roleService;
 
     /**
-     * Endpoint to create a Role.
+     * Endpoint to create a Games.
      *
      * @param roleApi role data to create.
-     * @return Role
+     * @return Games
      */
     @PostMapping("/")
     public ResponseEntity<Object> createRole(@RequestBody @Valid RoleApi roleApi, BindingResult result) {
@@ -86,7 +86,7 @@ public class RoleController {
      * Endpoint to get a role by id.
      *
      * @param id role id
-     * @return Role
+     * @return Games
      */
     @GetMapping("/get/{id}")
     public ResponseEntity<Object> getRoleById(@PathVariable Integer id) {
@@ -104,7 +104,7 @@ public class RoleController {
      * Endpoint to delete a role by id.
      *
      * @param id role id
-     * @return Role
+     * @return Games
      */
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteRoleById(@PathVariable Integer id) {

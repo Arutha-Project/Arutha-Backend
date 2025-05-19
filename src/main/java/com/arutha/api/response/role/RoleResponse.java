@@ -3,7 +3,7 @@ package com.arutha.api.response.role;
 import lombok.Data;
 
 /**
- * Response class for Role.
+ * Response class for Games.
  */
 @Data
 public class RoleResponse {
