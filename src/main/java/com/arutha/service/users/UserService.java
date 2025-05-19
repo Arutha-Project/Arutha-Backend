@@ -5,6 +5,7 @@ import com.arutha.api.response.users.UsersResponse;
 import com.arutha.constants.SystemConstants;
 import com.arutha.exception.CustomException;
 import com.arutha.mapper.users.UsersMapper;
+import com.arutha.model.role.Role;
 import com.arutha.model.users.Child;
 import com.arutha.model.users.Teachers;
 import com.arutha.model.users.Users;
@@ -69,7 +70,7 @@ public class UserService {
     public Users saveUser(UserRegistrationApi userRegistrationApi) throws CustomException {
         try {
             Users user = usersMapper.toUserEntity(userRegistrationApi);
-            user.setRole(roleService.getRoleByName(userRegistrationApi.getRoleName()));
+            user.setRole(roleService.getReferenceById(userRegistrationApi.getRoleId()));
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             Users savedUser = userRepository.save(user);
             saveAdditionalDetails(savedUser, userRegistrationApi);
@@ -149,8 +150,8 @@ public class UserService {
      */
     @Transactional
     public void saveAdditionalDetails(Users users, UserRegistrationApi userRegistrationApi) throws CustomException {
-
-        if (Objects.equals(userRegistrationApi.getRoleName(), SystemConstants.TEACHER)) {
+        Role role = roleService.getReferenceById(userRegistrationApi.getRoleId());
+        if (Objects.equals(role.getRoleName(), SystemConstants.TEACHER)) {
             try {
                 Teachers teachers = new Teachers();
                 teachers.setUser(users);
@@ -162,7 +163,7 @@ public class UserService {
             }
 
         }
-        if (Objects.equals(userRegistrationApi.getRoleName(), SystemConstants.CHILD)) {
+        if (Objects.equals(role.getRoleName(), SystemConstants.CHILD)) {
             try {
                 Child child = new Child();
                 child.setTeachers(teacherRepository.getReferenceById(userRegistrationApi.getTeacherId()));

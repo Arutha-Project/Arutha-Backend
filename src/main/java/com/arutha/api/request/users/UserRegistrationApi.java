@@ -24,7 +24,7 @@ public class UserRegistrationApi {
     private String password;
 
     @NotNull
-    private String roleName;
+    private Integer roleId;
 
     private Integer teacherId;
 
