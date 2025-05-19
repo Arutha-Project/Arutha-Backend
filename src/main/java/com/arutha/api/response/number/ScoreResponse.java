@@ -7,7 +7,7 @@ import lombok.Builder;
 import java.time.LocalDateTime;
 
 /**
- * Resepon class for User Registration.
+ * Response class for NumberScore.
  */
 @Setter
 @Getter
