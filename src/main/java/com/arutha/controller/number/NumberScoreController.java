@@ -32,7 +32,7 @@ public class NumberScoreController {
      * Save score.
      */
     @PostMapping("/save")
-    public ResponseEntity<ScoreResponse> saveScore(@RequestBody SaveScoreRequest request) {
+    public ResponseEntity<ScoreResponse> saveScore(@Valid @RequestBody SaveScoreRequest request) {
         NumberScore savedScore = numberScoreService.saveScore(
                 request.getUserId(),
                 request.getScore()
