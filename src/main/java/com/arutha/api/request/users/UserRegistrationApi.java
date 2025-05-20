@@ -26,4 +26,6 @@ public class UserRegistrationApi {
     @NotNull
     private Integer roleId;
 
+    private Integer teacherId;
+
 }

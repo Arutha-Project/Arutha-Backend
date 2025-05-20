@@ -44,8 +44,8 @@ public class WebSecurityConfig {
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers(EndpointConstant.USERS).hasAnyRole(SystemConstants.ADMIN)
-                        .requestMatchers(EndpointConstant.ROLES).hasAnyRole(SystemConstants.ADMIN)
+                        .requestMatchers(EndpointConstant.USERS).hasAnyRole(SystemConstants.TEACHER)
+                        .requestMatchers(EndpointConstant.ROLES).hasAnyRole(SystemConstants.TEACHER)
                         .requestMatchers(HttpMethod.POST, EndpointConstant.AUTH).permitAll()
                         .anyRequest().authenticated());
 

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Service class for Role.
+ * Service class for Games.
  */
 @Service
 @AllArgsConstructor
@@ -27,10 +27,10 @@ public class RoleService {
     private final RoleMapper roleMapper;
 
     /**
-     * Endpoint to create a Role.
+     * Endpoint to create a Games.
      *
      * @param roleApi role data to create.
-     * @return Role
+     * @return Games
      */
     public Role createRole(RoleApi roleApi) throws CustomException {
         try {
@@ -39,7 +39,7 @@ public class RoleService {
             return roleRepository.save(role);
 
         } catch (RuntimeException e) {
-            String errMsg = "Error while inserting Role with name: " + roleApi.getRoleName();
+            String errMsg = "Error while inserting Games with name: " + roleApi.getRoleName();
             LOGGER.error(errMsg);
             throw new CustomException(AppErrorCodes.RoleErrorCodes.ROLE_INSERT_QUERY_FAILED, errMsg);
         }
@@ -65,7 +65,7 @@ public class RoleService {
      * Endpoint to get a role by id.
      *
      * @param id role id
-     * @return Role
+     * @return Games
      */
     public RoleResponse getRoleById(Integer id) throws CustomException {
         try {
@@ -84,13 +84,13 @@ public class RoleService {
      *
      * @param id      role id
      * @param roleApi role data to update
-     * @return Role
+     * @return Games
      */
     public Role updateRole(Integer id, RoleApi roleApi) throws CustomException {
         try {
             Role existingRole = roleRepository.findById(id).orElse(null);
             if (existingRole == null) {
-                String errMsg = "Role with id: " + id + " does not exist";
+                String errMsg = "Games with id: " + id + " does not exist";
                 throw new CustomException(AppErrorCodes.RoleErrorCodes.ROLE_NOT_FOUND, errMsg);
             }
             Role role = roleMapper.updateRoleEntity(existingRole, roleApi);
@@ -111,7 +111,7 @@ public class RoleService {
         try {
             Role role = roleRepository.findById(id).orElse(null);
             if (role == null) {
-                String errMsg = "Role with id: " + id + " does not exist";
+                String errMsg = "Games with id: " + id + " does not exist";
                 throw new CustomException(AppErrorCodes.RoleErrorCodes.ROLE_NOT_FOUND, errMsg);
             }
             roleRepository.delete(role);
@@ -126,13 +126,30 @@ public class RoleService {
      * Endpoint to get a role by id.
      *
      * @param roleId role id
-     * @return Role
+     * @return Games
      */
     public Role getReferenceById(Integer roleId) throws CustomException {
         try {
             return roleRepository.getReferenceById(roleId);
         } catch (Exception e) {
             String errMsg = "Error while fetching role with id: " + roleId;
+            LOGGER.error(errMsg);
+            throw new CustomException(AppErrorCodes.RoleErrorCodes.ROLE_NOT_FOUND, errMsg);
+        }
+    }
+
+
+    /**
+     * Endpoint to get a role by name.
+     *
+     * @param roleName role name
+     *
+     */
+    public Role getRoleByName(String roleName) throws CustomException {
+        try {
+            return roleRepository.findByRoleName(roleName);
+        } catch (Exception e) {
+            String errMsg = "Error while fetching role with name: " + roleName;
             LOGGER.error(errMsg);
             throw new CustomException(AppErrorCodes.RoleErrorCodes.ROLE_NOT_FOUND, errMsg);
         }

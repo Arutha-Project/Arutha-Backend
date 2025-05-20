@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Custom resolver useful for Role.
+ * Custom resolver useful for Games.
  */
 @Component
 public class RoleResolver {
