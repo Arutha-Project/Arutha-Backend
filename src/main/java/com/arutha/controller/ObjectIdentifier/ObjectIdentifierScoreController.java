@@ -5,20 +5,18 @@ import com.arutha.api.response.ObjectIdentifier.ScoreResponse;
 import com.arutha.model.ObjectIdentifier.ObjectIdentifierScore;
 import com.arutha.service.ObjectIdentifier.ObjectIdentifierScoreService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 @RequestMapping("/object-identifier-scores")
 public class ObjectIdentifierScoreController {
 
@@ -26,8 +24,8 @@ public class ObjectIdentifierScoreController {
 
     @PostMapping
     public ResponseEntity<ObjectIdentifierScore> saveScore(@Valid @RequestBody ObjectIdentifierScoreRequest request) {
-        ObjectIdentifierScore savedScore = scoreService.saveScore(request);
-        return new ResponseEntity<>(savedScore, HttpStatus.CREATED);
+       scoreService.saveScore(request);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/user/{userId}")

@@ -19,7 +19,7 @@ public class ObjectIdentifierScoreService {
 
     private final UserRepository userRepository;
 
-    public ObjectIdentifierScore saveScore(ObjectIdentifierScoreRequest request) {
+    public void saveScore(ObjectIdentifierScoreRequest request) {
         ObjectIdentifierScore score = new ObjectIdentifierScore();
 
         // Assuming user exists — you can add error handling
@@ -31,7 +31,7 @@ public class ObjectIdentifierScoreService {
         score.setScore(request.getScore());
         score.setTotalItems(request.getTotalItems());
 
-        return scoreRepository.save(score);
+        scoreRepository.save(score);
     }
 
     public List<ScoreResponse> getScoresByUserId(Integer userId) {

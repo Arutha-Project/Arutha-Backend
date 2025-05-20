@@ -9,5 +9,5 @@ public class SystemConstants {
     }
 
     public static final String TEACHER = "TEACHER";
-    public static final String CHILD = "CHILD";
+    public static final String STUDENT = "STUDENT";
 }
