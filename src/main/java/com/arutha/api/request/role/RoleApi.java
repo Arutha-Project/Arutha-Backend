@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Request class for Games.
+ * Request class for Role.
  */
 @Getter
 @Setter
