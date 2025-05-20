@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ObjectIdentifierScoreRepository extends JpaRepository<ObjectIdentifierScore, Long> {
-    List<ObjectIdentifierScore> findByUserId(Long userId);
+public interface ObjectIdentifierScoreRepository extends JpaRepository<ObjectIdentifierScore, Integer> {
+    List<ObjectIdentifierScore> findByUserId(Integer userId);
 }

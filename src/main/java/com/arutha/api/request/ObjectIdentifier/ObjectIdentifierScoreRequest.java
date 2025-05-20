@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 public class ObjectIdentifierScoreRequest {
 
     @NotNull(message = "User ID cannot be null")
-    private Long userId;
+    private Integer userId;
 
     @NotBlank(message = "Category cannot be blank")
     private String category;
