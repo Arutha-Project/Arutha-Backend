@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 import java.util.List;
 
 /**
- * Mapstruct Mapper class for mapping Role entities.
+ * Mapstruct Mapper class for mapping Games entities.
  */
 @Mapper(componentModel = "spring")
 public interface RoleMapper {

@@ -8,7 +8,6 @@ public class SystemConstants {
         throw new IllegalStateException("Cannot instantiate a Constant class: SystemConstants");
     }
 
-    public static final String ADMIN = "TEACHER";
-
-    public static final String STUDENT = "STUDENT";
+    public static final String TEACHER = "TEACHER";
+    public static final String CHILD = "CHILD";
 }

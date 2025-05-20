@@ -44,6 +44,7 @@ public class AppErrorCodes {
         public static final int USERS_INSERT_QUERY_FAILED = 20004;
         public static final int USERS_UPDATE_QUERY_FAILED = 20005;
         public static final int USERS_DELETE_QUERY_FAILED = 20006;
+        public static final int CHILD_INSERT_QUERY_FAILED = 20007;
 
     }
 

@@ -48,6 +48,8 @@ public class WebSecurityConfig {
                         .requestMatchers(EndpointConstant.NUMBERS).hasAnyRole(SystemConstants.STUDENT,
                                 SystemConstants.ADMIN)
                         .requestMatchers(EndpointConstant.ROLES).hasAnyRole(SystemConstants.ADMIN)
+                        .requestMatchers(EndpointConstant.USERS).hasAnyRole(SystemConstants.TEACHER)
+                        .requestMatchers(EndpointConstant.ROLES).hasAnyRole(SystemConstants.TEACHER)
                         .requestMatchers(HttpMethod.POST, EndpointConstant.AUTH).permitAll()
                         .anyRequest().authenticated());
 

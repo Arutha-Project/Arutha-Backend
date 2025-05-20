@@ -1,4 +1,4 @@
-package com.arutha.model.role;
+package com.arutha.model.game;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,15 +20,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@ToString
-@Table(name = "role")
-public class Role {
+@Table(name = "games")
+public class Games {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "role_name", nullable = false)
-    private String roleName;
+    @Column(name = "game_name", nullable = false)
+    private String gameName;
+
+    @Column(name = "higher_score", nullable = false)
+    private String higherScore;
 }
