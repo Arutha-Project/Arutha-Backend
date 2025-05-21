@@ -1,10 +1,13 @@
-package com.arutha.api.request.ObjectIdentifier;
+package com.arutha.api.request.objectidentifier;
 
 import lombok.Data;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * Request class for Object Identification.
+ */
 @Data
 public class ObjectIdentifierScoreRequest {
 
