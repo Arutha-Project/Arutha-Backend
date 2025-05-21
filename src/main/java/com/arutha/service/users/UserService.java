@@ -163,7 +163,7 @@ public class UserService {
             }
 
         }
-        if (Objects.equals(role.getRoleName(), SystemConstants.CHILD)) {
+        if (Objects.equals(role.getRoleName(), SystemConstants.STUDENT)) {
             try {
                 Child child = new Child();
                 child.setTeachers(teacherRepository.getReferenceById(userRegistrationApi.getTeacherId()));
