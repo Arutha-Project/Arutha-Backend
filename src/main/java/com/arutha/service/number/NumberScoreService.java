@@ -1,19 +1,21 @@
 package com.arutha.service.number;
 
+import com.arutha.api.request.number.SaveScoreRequest;
+import com.arutha.api.response.number.ScoreResponse;
 import com.arutha.model.number.NumberScore;
 import com.arutha.model.users.Users;
-import com.arutha.repository.numbers.NumberScoreRepository;
+import com.arutha.repository.number.NumberScoreRepository;
 import com.arutha.repository.users.UserRepository;
-import lombok.RequiredArgsConstructor;
+
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * Number score service.
  */
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class NumberScoreService {
 
     /**
@@ -25,20 +27,32 @@ public class NumberScoreService {
     /**
      * Save score method.
      */
-    public NumberScore saveScore(Integer userId, Integer score) {
-        Users users = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+    public NumberScore saveScore(SaveScoreRequest request) {
+        NumberScore numberScore = new NumberScore();
 
-        NumberScore numberScore = NumberScore.builder()
-                .user(users)
-                .score(score)
-                .createdAt(LocalDateTime.now())
-                .build();
+        Users users = userRepository.findById(request.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + request.getUserId()));
+
+        numberScore.setUser(users);
+        numberScore.setScore(request.getScore());
 
         return numberScoreRepository.save(numberScore);
     }
 
-    public List<NumberScore> getUserScores(Long userId) {
-        return numberScoreRepository.findByUserId(userId);
+    /**
+     *get User Scores.
+     */
+    public List<ScoreResponse> getUserScores(Integer userId) {
+        List<NumberScore> numberScores = numberScoreRepository.findByUserId(userId);
+
+        return numberScores.stream()
+                .map(numberScore -> {
+                    ScoreResponse response = new ScoreResponse();
+                    response.setId(numberScore.getId());
+                    response.setUserId(numberScore.getUser().getId());
+                    response.setScore(numberScore.getScore());
+                    return response;
+                })
+                .toList();
     }
 }

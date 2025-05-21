@@ -1,15 +1,12 @@
 package com.arutha.api.request.number;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 /**
  * Request class for Number score save.
  */
 
-@Getter
-@Setter
+@Data
 public class SaveScoreRequest {
     @NotNull
     private Integer userId;

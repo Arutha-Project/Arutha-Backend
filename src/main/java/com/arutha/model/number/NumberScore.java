@@ -14,7 +14,6 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Builder;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
@@ -24,7 +23,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "numbers_score")
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 

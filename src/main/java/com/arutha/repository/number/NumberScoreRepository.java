@@ -1,4 +1,4 @@
-package com.arutha.repository.numbers;
+package com.arutha.repository.number;
 
 import com.arutha.model.number.NumberScore;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +10,6 @@ import java.util.List;
  * Number score repository.
  */
 @Repository
-public interface NumberScoreRepository extends JpaRepository<NumberScore, Long> {
-    List<NumberScore> findByUserId(Long userId);
+public interface NumberScoreRepository extends JpaRepository<NumberScore, Integer> {
+    List<NumberScore> findByUserId(Integer userId);
 }
