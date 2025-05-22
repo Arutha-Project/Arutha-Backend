@@ -166,7 +166,8 @@ public class UserService {
         if (Objects.equals(role.getRoleName(), SystemConstants.STUDENT)) {
             try {
                 Child child = new Child();
-                child.setTeachers(teacherRepository.getReferenceById(userRegistrationApi.getTeacherId()));
+                child.setTeachers(teacherRepository.findByUserId(userRepository
+                        .getReferenceById(userRegistrationApi.getTeacherId()).getId()));
                 child.setUser(users);
                 childRepository.save(child);
             } catch (Exception e) {
