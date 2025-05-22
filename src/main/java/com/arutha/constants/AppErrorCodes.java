@@ -49,6 +49,24 @@ public class AppErrorCodes {
     }
 
     /**
+     * Error codes for Drawings.
+     */
+    public static class DrawingErrorCodes {
+        private DrawingErrorCodes() {
+            throw new IllegalStateException(CANNOT_INSTANTIATE_CLASS + "DrawingErrorCodes");
+        }
+
+        public static final int DEFAULT = 40000;
+        public static final int DRAWING_NOT_FOUND = 40001;
+        public static final int INVALID_DRAWING = 40002;
+        public static final int DRAWING_SELECT_QUERY_FAILED = 40003;
+        public static final int DRAWING_INSERT_QUERY_FAILED = 40004;
+        public static final int DRAWING_UPDATE_QUERY_FAILED = 40005;
+        public static final int DRAWING_DELETE_QUERY_FAILED = 40006;
+
+    }
+
+    /**
      * Error codes for Auth.
      */
     public static class AuthErrorCodes {

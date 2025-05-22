@@ -177,4 +177,22 @@ public class UserService {
 
         }
     }
+
+
+    /**
+     * Get user by id.
+     *
+     * @param userId - user id
+     * @return - user
+     * @throws CustomException - custom exception
+     */
+    public Users getReferenceById(Integer userId) throws CustomException {
+        try {
+            return userRepository.getReferenceById(userId);
+        } catch (Exception e) {
+            String errMsg = "Error while fetching user with id: " + userId;
+            LOGGER.error(errMsg);
+            throw new CustomException(AppErrorCodes.UsersErrorCodes.USERS_SELECT_QUERY_FAILED, errMsg);
+        }
+    }
 }

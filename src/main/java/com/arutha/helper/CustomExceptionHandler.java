@@ -154,6 +154,7 @@ public class CustomExceptionHandler {
                         AppErrorCodes.UsersErrorCodes.USERS_INSERT_QUERY_FAILED,
                         AppErrorCodes.UsersErrorCodes.USERS_UPDATE_QUERY_FAILED,
                         AppErrorCodes.UsersErrorCodes.USERS_DELETE_QUERY_FAILED,
+                        AppErrorCodes.UsersErrorCodes.CHILD_INSERT_QUERY_FAILED,
                         AppErrorCodes.UsersErrorCodes.DEFAULT -> ResponseEntity.internalServerError().body(
                             new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
 
@@ -166,5 +167,41 @@ public class CustomExceptionHandler {
                 new ErrorMessage(UNEXPECTED_ERROR_OCCURRED_MSG, AppErrorCodes.UsersErrorCodes.DEFAULT));
     }
 
+    /**
+     * Handle drawing resource exceptions.
+     *
+     * @param e exception
+     * @return error response
+     */
+    public static ResponseEntity<Object> handleDrawingResourceExceptions(Exception e) {
+        CustomException customException = getCustomException(e);
+
+        if (customException != null) {
+            return switch (customException.getAppErrorCode()) {
+                // 400 Bad Request
+                case AppErrorCodes.DrawingErrorCodes.INVALID_DRAWING -> ResponseEntity.badRequest().body(
+                        new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
+
+                // 404 Not Found
+                case AppErrorCodes.DrawingErrorCodes.DRAWING_NOT_FOUND ->
+                        ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                            new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
+
+                // 500 Internal Server Error for other cases
+                case AppErrorCodes.DrawingErrorCodes.DRAWING_SELECT_QUERY_FAILED,
+                        AppErrorCodes.DrawingErrorCodes.DRAWING_INSERT_QUERY_FAILED,
+                        AppErrorCodes.DrawingErrorCodes.DRAWING_UPDATE_QUERY_FAILED,
+                        AppErrorCodes.DrawingErrorCodes.DRAWING_DELETE_QUERY_FAILED,
+                        AppErrorCodes.DrawingErrorCodes.DEFAULT -> ResponseEntity.internalServerError().body(
+                            new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
+
+                // Default fallback for unexpected cases
+                default -> ResponseEntity.internalServerError().body(
+                        new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
+            };
+        }
+        return ResponseEntity.internalServerError().body(
+                new ErrorMessage(UNEXPECTED_ERROR_OCCURRED_MSG, AppErrorCodes.UsersErrorCodes.DEFAULT));
+    }
 
 }
