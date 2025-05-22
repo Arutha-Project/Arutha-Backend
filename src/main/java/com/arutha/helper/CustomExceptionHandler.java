@@ -185,7 +185,7 @@ public class CustomExceptionHandler {
                 // 404 Not Found
                 case AppErrorCodes.DrawingErrorCodes.DRAWING_NOT_FOUND ->
                         ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                        new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
+                            new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
 
                 // 500 Internal Server Error for other cases
                 case AppErrorCodes.DrawingErrorCodes.DRAWING_SELECT_QUERY_FAILED,
@@ -193,7 +193,7 @@ public class CustomExceptionHandler {
                         AppErrorCodes.DrawingErrorCodes.DRAWING_UPDATE_QUERY_FAILED,
                         AppErrorCodes.DrawingErrorCodes.DRAWING_DELETE_QUERY_FAILED,
                         AppErrorCodes.DrawingErrorCodes.DEFAULT -> ResponseEntity.internalServerError().body(
-                        new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
+                            new ErrorMessage(customException.getMessage(), customException.getAppErrorCode()));
 
                 // Default fallback for unexpected cases
                 default -> ResponseEntity.internalServerError().body(

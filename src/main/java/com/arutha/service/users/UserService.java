@@ -180,7 +180,7 @@ public class UserService {
 
 
     /**
-     * Get user by id
+     * Get user by id.
      *
      * @param userId - user id
      * @return - user
