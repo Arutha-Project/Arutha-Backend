@@ -34,9 +34,12 @@ public class PasswordResetService {
     public boolean checkEmailExists(String email) {
         try {
             return userRepository.existsByEmail(email);
-        } catch (Exception e) {
-            LOGGER.error("Error while checking email existence for: {}", email, e);
+        } catch (DataAccessException e) {
+            LOGGER.error("Database error while checking email existence for: {}", email, e);
             return false;
+        } catch (Exception e) {
+            LOGGER.error("Unexpected error while checking email existence for: {}", email, e);
+            throw e;
         }
     }
 
