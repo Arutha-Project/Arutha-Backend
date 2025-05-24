@@ -6,9 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Response class for reset password.
+ * Response class for email-existence check.
  *
- * <p>Contains information about whether the email exists and a related message.
+ * <p>Represents the result of checking whether an email exists, including a boolean flag,
+ * a related message, and the email address in question.
  */
 
 @Setter
