@@ -1,9 +1,11 @@
 package com.arutha.mapper.users;
 
 import com.arutha.api.request.users.UserRegistrationApi;
+import com.arutha.api.response.users.ChildDetailsResponse;
 import com.arutha.api.response.users.UsersResponse;
 import com.arutha.mapper.resolver.roleresolver.RoleResolver;
 import com.arutha.model.users.Users;
+import com.arutha.projection.childdetailsprojection.ChildDetailsProjection;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -38,6 +40,13 @@ public interface UsersMapper {
     UsersResponse toUsersResponse(Users users);
 
     List<UsersResponse> toUsersResponseList(List<Users> users);
+
+    @Mapping(source = "userId", target = "userId")
+    @Mapping(source = "studentId", target = "studentId")
+    @Mapping(source = "studentName", target = "studentName")
+    ChildDetailsResponse toChildDetailsResponse(ChildDetailsProjection childDetailsProjection);
+
+    List<ChildDetailsResponse> toChildDetailsResponseList(List<ChildDetailsProjection> childDetailsProjectionList);
 
 
 }

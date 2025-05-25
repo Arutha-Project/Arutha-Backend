@@ -1,12 +1,7 @@
 package com.arutha.api.response.users;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.List;
 
 /**
  * Response class for User.

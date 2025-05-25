@@ -1,9 +1,9 @@
 package com.arutha.controller.users;
 
 import com.arutha.api.request.users.UserRegistrationApi;
+import com.arutha.api.response.users.ChildDetailsResponse;
 import com.arutha.api.response.users.UsersResponse;
 import com.arutha.constants.AppErrorCodes;
-import com.arutha.controller.role.RoleController;
 import com.arutha.helper.CustomExceptionHandler;
 import com.arutha.model.users.Users;
 import com.arutha.service.users.UserService;
@@ -133,6 +133,24 @@ public class UserController {
         try {
             userService.deleteUser(userId);
             return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            return CustomExceptionHandler.handleUsersResourceExceptions(e);
+        }
+    }
+
+    /**
+     * Endpoint to get child details by teacher id.
+     *
+     * @param teacherId teacher id
+     * @return List of ChildDetailsResponse
+     */
+    @GetMapping("/children/{teacherId}")
+    public ResponseEntity<Object> getChildDetailsByTeacherId(@PathVariable Integer teacherId) {
+        LOGGER.info("GET request for get child details received.");
+        try {
+            List<ChildDetailsResponse> childDetailsResponses = userService.getChildDetailsByTeacherId(teacherId);
+            return ResponseEntity.ok(childDetailsResponses);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             return CustomExceptionHandler.handleUsersResourceExceptions(e);

@@ -36,7 +36,7 @@ public class DrawingController {
      */
     @PostMapping("/")
     public ResponseEntity<Object> createDrawing(@RequestBody @Valid DrawingApi drawingApi,
-                                             BindingResult result) {
+                                                BindingResult result) {
         LOGGER.info("POST request for drawing received.");
         if (result.hasErrors()) {
             String errMsg = "Error while creating drawing";
