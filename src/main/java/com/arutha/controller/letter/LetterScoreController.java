@@ -17,7 +17,7 @@ public class LetterScoreController {
     private final LetterScoreService service;
 
 
-    @PostMapping("/")
+    @PostMapping("/save")
     public ResponseEntity<LetterScore> save(@RequestBody LetterScore score) {
         return ResponseEntity.ok(service.saveScore(score));
     }
