@@ -1,6 +1,7 @@
 package com.arutha.service.users;
 
 import com.arutha.api.request.users.UserRegistrationApi;
+import com.arutha.api.response.users.ChildDetailsResponse;
 import com.arutha.api.response.users.UsersResponse;
 import com.arutha.constants.SystemConstants;
 import com.arutha.exception.CustomException;
@@ -192,6 +193,24 @@ public class UserService {
             return userRepository.getReferenceById(userId);
         } catch (Exception e) {
             String errMsg = "Error while fetching user with id: " + userId;
+            LOGGER.error(errMsg);
+            throw new CustomException(AppErrorCodes.UsersErrorCodes.USERS_SELECT_QUERY_FAILED, errMsg);
+        }
+    }
+
+
+    /**
+     * Get child details by teacher id.
+     *
+     * @param teacherId - teacher id
+     * @return - list of child details
+     * @throws CustomException - custom exception
+     */
+    public List<ChildDetailsResponse> getChildDetailsByTeacherId(Integer teacherId) throws CustomException {
+        try {
+            return usersMapper.toChildDetailsResponseList(childRepository.getChildDetailsByTeacherId(teacherId));
+        } catch (Exception e) {
+            String errMsg = "Error while fetching child details with teacher id: " + teacherId;
             LOGGER.error(errMsg);
             throw new CustomException(AppErrorCodes.UsersErrorCodes.USERS_SELECT_QUERY_FAILED, errMsg);
         }
