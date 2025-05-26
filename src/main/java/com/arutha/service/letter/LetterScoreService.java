@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Letter score service.
+ */
 @Service
 @RequiredArgsConstructor
 public class LetterScoreService {
